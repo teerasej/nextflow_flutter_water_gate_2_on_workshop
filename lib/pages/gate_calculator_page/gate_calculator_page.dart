@@ -1,9 +1,14 @@
 // lib/pages/gate_calculator_page/gate_calculator_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'gate_calculator_controller.dart';
 
 class GateCalculatorPage extends StatelessWidget {
-  const GateCalculatorPage({super.key});
+  GateCalculatorPage({super.key});
+
+  var controller = Get.put(GateCalculatorController());
 
   @override
   Widget build(BuildContext context) {
@@ -21,36 +26,66 @@ class GateCalculatorPage extends StatelessWidget {
                   labelText: 'จำลองระดับน้ำเหนือเขื่อน (m MSL)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.ttn_for = double.parse(value);
+                },
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'ระดับน้ำที่ต้องการยกระดับ (m MSL)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.lv_inp = double.parse(value);
+                },
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'แผนระบายน้ำ (m MSL)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.demand_irr = double.parse(value);
+                },
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Total Sum SNR Release (MCM)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.snr_rrel = double.parse(value);
+                },
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Total Sum TTN Release (MCM)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.ttnsumrel = double.parse(value);
+                },
               ),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'ปั้มสูบกลับ (m MSL)',
                 ),
                 keyboardType: TextInputType.number,
+
+                // เก็บค่าจากช่องกรอกข้อมูล เข้าตัวแปรใน controller
+                onChanged: (value) {
+                  controller.dis_tol = double.parse(value);
+                },
               ),
               SizedBox(
                 height: 16,
@@ -105,13 +140,9 @@ class GateCalculatorPage extends StatelessWidget {
                   print(value);
                 },
               ),
-
-              // เว้นระยะจาก slider
               SizedBox(
                 height: 16,
               ),
-
-              // ใส่ปุ่ม
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
