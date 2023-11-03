@@ -34,7 +34,7 @@ class GateCalculatorPage extends StatelessWidget {
               ),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'ระดับน้ำที่ต้องการยกระดับ (m MSL)',
+                  labelText: ' ระดับน้ำที่ต้องการยกระดับ (m MSL)',
                 ),
                 keyboardType: TextInputType.number,
 
